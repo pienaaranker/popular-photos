@@ -41,7 +41,7 @@ class LatestPopularPhotosCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
         let photo = photos[indexPath.row]
         cell.setImage(with: photo.imageUrl)
-    
+        cell.frame.size.width = self.view.frame.width/2
         return cell
     }
     

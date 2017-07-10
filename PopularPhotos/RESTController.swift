@@ -17,7 +17,7 @@ class RESTController {
     let baseURL = "https://api.500px.com/v1"
     
     func getLatestPopularPhotos(page: Int, completion: @escaping (([ModelPhoto]) -> Void)){
-        let url = "\(baseURL)/photos?consumer_key=\(consKey)&feature=popular&page=\(page)"
+        let url = "\(baseURL)/photos?consumer_key=\(consKey)&feature=popular&sort=created_at&image_size=3&page=\(page)"
         self.busy = true
         
         Alamofire.request(url).responseJSON() { response in

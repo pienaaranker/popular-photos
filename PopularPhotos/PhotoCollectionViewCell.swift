@@ -14,6 +14,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func setImage(with url:String){
+        imageView.image = nil
         guard let url = URL(string:url)  else { return }
         Nuke.loadImage(with: url, into: imageView)
     }
