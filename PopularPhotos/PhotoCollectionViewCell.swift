@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Nuke
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    func set(image: UIImage){
-        imageView.image = image
+    func setImage(with url:String){
+        guard let url = URL(string:url)  else { return }
+        Nuke.loadImage(with: url, into: imageView)
     }
 }

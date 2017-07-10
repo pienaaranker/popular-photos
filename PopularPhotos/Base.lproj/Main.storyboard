@@ -29,7 +29,7 @@
         <scene sceneID="Q0I-RX-xsd">
             <objects>
                 <collectionViewController id="vkX-Q2-6d5" customClass="LatestPopularPhotosCollectionViewController" customModule="PopularPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LEi-iP-xQK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="LEi-iP-xQK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,27 +60,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="GiW-Tb-fEZ" id="3eT-5V-pmj"/>
-                                </connections>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoaderCell" id="ap0-qG-8BP" customClass="LoaderCollectionViewCell" customModule="PopularPhotos" customModuleProvider="target">
-                                <rect key="frame" x="211" y="0.0" width="164" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iBU-4e-lAy">
-                                            <rect key="frame" x="64" y="55" width="37" height="37"/>
-                                            <color key="color" red="0.11372549086809158" green="0.72156864404678345" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="iBU-4e-lAy" firstAttribute="centerX" secondItem="ap0-qG-8BP" secondAttribute="centerX" id="buA-EG-6gv"/>
-                                    <constraint firstItem="iBU-4e-lAy" firstAttribute="centerY" secondItem="ap0-qG-8BP" secondAttribute="centerY" id="c0O-Pa-yfk"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="loader" destination="iBU-4e-lAy" id="2DC-xD-dxX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

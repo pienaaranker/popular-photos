@@ -11,32 +11,34 @@ import Alamofire
 import SwiftyJSON
 
 class RESTController {
+    var busy = false
+    
     let consKey = "ql5e4SsQUjIB9E05wPjfSzTFjLTI0POIh69NDMPR"
     let baseURL = "https://api.500px.com/v1"
     
-    
-    func getLatestPopularPhotos(completion: (([ModelPhoto]) -> Void)){
-        let url = "\(baseURL)/photos?consumer_key=\(consKey)"
+    func getLatestPopularPhotos(page: Int, completion: @escaping (([ModelPhoto]) -> Void)){
+        let url = "\(baseURL)/photos?consumer_key=\(consKey)&feature=popular&page=\(page)"
+        self.busy = true
         
         Alamofire.request(url).responseJSON() { response in
+            self.busy = false
             if let error = response.error {
-                print(error.localizedDescription)
+                print("Error in getLatestPopularPhotos: \(error.localizedDescription)")
                 return
             }
-            let page = ModelPage(fromJson: response.data?.json())
-            print("total items: \(page.totalItems)")
+            guard let data = response.data
+                else {
+                    print("Error in getLatestPopularPhotos: Invalid data")
+                    return
+            }
+            let json = JSON(data: data)
+            
+            if response.response?.statusCode == 200 {
+                let page = ModelPage(fromJson: json)
+                completion(page.photos)                
+            }else{
+                print("Error in getLatestPopularPhotos: \(json)")
+            }
         }
-    }
-}
-
-extension Data {
-    func json() -> JSON?{
-        return JSON(data: self)
-    }
-}
-
-extension NSData {
-    func json() -> JSON?{
-        return JSON(data: self as Data)
     }
 }

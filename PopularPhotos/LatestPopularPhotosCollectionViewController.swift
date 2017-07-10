@@ -7,43 +7,51 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import Nuke
 
 class LatestPopularPhotosCollectionViewController: UICollectionViewController {
 
     var rest = RESTController()
+    var photos = [ModelPhoto]()
+    var page = 1
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        rest.getLatestPopularPhotos(completion: { photos in
-            
-        })
+        loadImages()
     }
     
+    func loadImages(){
+        rest.getLatestPopularPhotos(page: self.page, completion: { photos in
+            self.photos.append(contentsOf: photos)
+            self.collectionView?.reloadData()
+        })
+    }
     
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
+        let photo = photos[indexPath.row]
+        cell.setImage(with: photo.imageUrl)
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // if last cell increment page and load next
+        if indexPath.row == photos.count - 1 &&
+            !rest.busy{
+            page += 1
+            loadImages()
+        }
     }
 
 }
