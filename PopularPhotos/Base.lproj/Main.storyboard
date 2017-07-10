@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z4G-Pf-m2x">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="J5M-1o-qW4">
+            <objects>
+                <navigationController id="Z4G-Pf-m2x" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eul-Qb-3bJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vkX-Q2-6d5" kind="relationship" relationship="rootViewController" id="5XV-Ti-KaI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CE1-L7-vRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-348" y="130"/>
+        </scene>
+        <!--Latest Popular Photos-->
+        <scene sceneID="Q0I-RX-xsd">
+            <objects>
+                <collectionViewController id="vkX-Q2-6d5" customClass="LatestPopularPhotosCollectionViewController" customModule="PopularPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LEi-iP-xQK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="v15-Ls-SQl">
+                            <size key="itemSize" width="164" height="147"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="qBe-sE-aOy" customClass="PhotoCollectionViewCell" customModule="PopularPhotos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-Tb-fEZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GiW-Tb-fEZ" secondAttribute="trailing" id="1oB-pz-Kyf"/>
+                                    <constraint firstItem="GiW-Tb-fEZ" firstAttribute="top" secondItem="qBe-sE-aOy" secondAttribute="top" id="F4Q-za-h2a"/>
+                                    <constraint firstItem="GiW-Tb-fEZ" firstAttribute="leading" secondItem="qBe-sE-aOy" secondAttribute="leading" id="fu8-MD-uAg"/>
+                                    <constraint firstAttribute="bottom" secondItem="GiW-Tb-fEZ" secondAttribute="bottom" id="j2g-nj-cNG"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="GiW-Tb-fEZ" id="3eT-5V-pmj"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoaderCell" id="ap0-qG-8BP" customClass="LoaderCollectionViewCell" customModule="PopularPhotos" customModuleProvider="target">
+                                <rect key="frame" x="211" y="0.0" width="164" height="147"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iBU-4e-lAy">
+                                            <rect key="frame" x="64" y="55" width="37" height="37"/>
+                                            <color key="color" red="0.11372549086809158" green="0.72156864404678345" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="iBU-4e-lAy" firstAttribute="centerX" secondItem="ap0-qG-8BP" secondAttribute="centerX" id="buA-EG-6gv"/>
+                                    <constraint firstItem="iBU-4e-lAy" firstAttribute="centerY" secondItem="ap0-qG-8BP" secondAttribute="centerY" id="c0O-Pa-yfk"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="loader" destination="iBU-4e-lAy" id="2DC-xD-dxX"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="vkX-Q2-6d5" id="kxj-8E-tW9"/>
+                            <outlet property="delegate" destination="vkX-Q2-6d5" id="iKi-Ou-n8x"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Latest Popular Photos" id="PBb-nu-o09"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VST-sU-KHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509.60000000000002" y="129.98500749625188"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.11372549086809158" green="0.72156864404678345" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
+</document>

@@ -1,0 +1,7 @@
+syntax: glob
+*.xcuserstate
+Podfile.lock
+Pods/
+.DS_Store
+*/xcuserdata/
+*.xcworkspacedata
